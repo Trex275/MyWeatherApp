@@ -2,20 +2,27 @@ import { StatusBar } from 'expo-status-bar';
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import {MaterialCommunityIcons} from 'react-native-vector-icons'
+import { weatherconditions } from '../utilities/Weatherconditions';
+import PropTypes from 'prop-types'
 
-const Weather = ()=>{
+const Weather = ({weather, temperature})=>{
     return(
-        <View style = {styles.weathercontainer}>
+        <View style = {[styles.weathercontainer, {backgroundColor: weatherconditions[weather].color}]}>
             <View style = {styles.headercontainer}>
-                <MaterialCommunityIcons name = "weather-sunny" size = {45} color = {"white"}/>
-                <Text style={styles.temptext}>Temperature</Text>
+                <MaterialCommunityIcons name = {weatherconditions[weather].icon} size = {70} color = {"white"}/>
+                <Text style={styles.temptext}>{temperature}°</Text>
             </View>
             <View style = {styles.bodycontainer}>
-                <Text style = {styles.title}>So Sunny!</Text>
-                <Text style = {styles.subtitle}>It hurts my eyes</Text>
+                <Text style = {styles.title}>{weatherconditions[weather].title}</Text>
+                <Text style = {styles.subtitle}>{weatherconditions[weather].subtitle}</Text>
             </View>
         </View>
     )
+}
+
+Weather.propTypes = {
+    temperature: PropTypes.number.isRequired, 
+    weather: PropTypes.string
 }
 
 const styles = StyleSheet.create({
