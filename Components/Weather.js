@@ -6,6 +6,7 @@ import { weatherconditions } from '../utilities/Weatherconditions';
 import PropTypes from 'prop-types'
 
 const Weather = ({weather, temperature})=>{
+    if (weather){
     return(
         <View style = {[styles.weathercontainer, {backgroundColor: weatherconditions[weather].color}]}>
             <View style = {styles.headercontainer}>
@@ -18,6 +19,15 @@ const Weather = ({weather, temperature})=>{
             </View>
         </View>
     )
+} else {
+    return(
+        <View style = {styles.weathercontainer}>
+            <Text>
+                Loading Data...
+            </Text>
+        </View>
+    )
+}
 }
 
 Weather.propTypes = {
