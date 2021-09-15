@@ -22,7 +22,7 @@ const Weather = ({weather, temperature})=>{
 } else {
     return(
         <View style = {styles.weathercontainer}>
-            <Text>
+            <Text style = {{fontSize: 40}}>
                 Loading Data...
             </Text>
         </View>
@@ -38,7 +38,9 @@ Weather.propTypes = {
 const styles = StyleSheet.create({
     weathercontainer: {
         flex: 1,
-        backgroundColor: '#f7b733'
+        backgroundColor: '#f7b733',
+        alignItems: 'center',
+        justifyContent: 'center', 
     },
     headercontainer: {
         flex: 1,
